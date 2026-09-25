@@ -13,7 +13,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-SLUG=$(basename "$PWD")
+FOLDER=$(basename "$PWD")
 REGISTRY="../../skilllet-registry/catalogue.json"
 
 # Version: the plugin manifest if there is one, else the latest v* tag, else "dev".
@@ -22,15 +22,19 @@ VERSION=""
 [ -n "$VERSION" ] || VERSION=$(git describe --tags --abbrev=0 --match 'v*' 2>/dev/null | sed 's/^v//' || true)
 [ -n "$VERSION" ] || VERSION="dev"
 
-# Branded name from the registry: IndieOps-Skilllet-<id>-<Name>-v<version>.zip
-ZIPNAME="$SLUG-v$VERSION.zip"
+# The folder is named after the GitHub repo (gbp-coach); what ships is named after the
+# product's slug (gbpcoach), because the slug is the SKILL.md name and the /command.
+# The registry's "repo" field maps one to the other.
+SLUG=""; BRANDED=""
 if [ -f "$REGISTRY" ] && command -v node >/dev/null; then
-  BRANDED=$(node -e '
-    const c = require(process.argv[1]); const s = c.skilllets.find((x) => x.slug === process.argv[2] || (x.previously || []).includes(process.argv[2]));
-    if (s) process.stdout.write(`IndieOps-Skilllet-${s.id}-${s.name.replace(/[^A-Za-z0-9]+/g, "")}`);
-  ' "$(cd "$(dirname "$REGISTRY")" && pwd)/catalogue.json" "$SLUG" 2>/dev/null || true)
-  [ -n "$BRANDED" ] && ZIPNAME="$BRANDED-v$VERSION.zip"
+  read -r SLUG BRANDED < <(node -e '
+    const c = require(process.argv[1]); const f = process.argv[2];
+    const s = c.skilllets.find((x) => x.repo === f) || c.skilllets.find((x) => x.slug === f || (x.previously || []).includes(f));
+    if (s) process.stdout.write(`${s.slug} IndieOps-Skilllet-${s.id}-${s.name.replace(/[^A-Za-z0-9]+/g, "")}`);
+  ' "$(cd "$(dirname "$REGISTRY")" && pwd)/catalogue.json" "$FOLDER" 2>/dev/null) || true
 fi
+[ -n "$SLUG" ] || SLUG="$FOLDER"
+ZIPNAME="${BRANDED:-$SLUG}-v$VERSION.zip"
 
 git rev-parse --is-inside-work-tree >/dev/null 2>&1 || { echo "REFUSING: not a git repo. Only tracked files may ship."; exit 1; }
 [ -z "$(git status --porcelain)" ] || echo "Note: uncommitted changes are NOT in this release (only committed files ship)."
