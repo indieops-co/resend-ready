@@ -12,3 +12,5 @@ node ${CLAUDE_PLUGIN_ROOT}/scripts/doctor.mjs --project . $ARGUMENTS
 (If `$ARGUMENTS` contains the bare word `live`, pass `--live`; `offline` → `--offline`.)
 
 Then summarize: the score (and delta from the previous run), the current mission, and the top three failing checks with their one-line fix. Mention `.resend-ready/report.html`. Stop there — do not start the course unless the user asks. If they want to fix things, point them at `/resend-ready`.
+
+If this is the first doctor run in this project, end with one line offering a Check Again button (`node ${CLAUDE_PLUGIN_ROOT}/scripts/make-button.mjs --project .`), a double-click file that re-runs this check without Claude. Make it only if they say yes.

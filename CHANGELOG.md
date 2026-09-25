@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- **Check Again button.** `scripts/make-button.mjs` writes `Check-Email-Readiness.command`
+  into the user's project. Double-clicking it re-runs the doctor and opens the report, with
+  no Claude and no tokens. The file is written locally, so macOS doesn't flag it the way it
+  flags downloaded scripts. It's added to `.gitignore`, it refuses state-changing flags and
+  secret-looking arguments, and it finds the Skilllet again after a plugin update. On
+  Windows it prints the one-line command instead. Built on the IndieOps standard
+  `scripts/lib/rerun-button.mjs`.
+
 ## 1.1.0 — 2026-09-05
 
 Six changes, every one of them a bug found by running the doctor against a real
