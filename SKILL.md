@@ -83,7 +83,9 @@ Inside a sandbox such as Cowork, the script can't tell which computer the button
 - On Linux it writes a `.sh` file instead.
 - On Windows no file is made; the script prints the one-line command to show them.
 
-Tell them where the button is and that it opens the report when it finishes. Don't offer it again in the same project. If the button ever says it can't find the Skilllet (after a move or reinstall), just make a new one.
+Tell them where the button is and that it opens the report when it finishes.
+
+**The repeat rule:** if they said no, don't nag. But if they later ask for the doctor again in the same project, offer it once more in one line, because a repeat request is exactly the signal the button exists for. After a second no, never again. If a button already exists, just remind them it's there. If the button ever says it can't find the Skilllet (after a move or reinstall), just make a new one.
 
 The button runs the same read-only doctor you do. Never add `--set`, `--confirm`, `--reset` or `--certificate` to it (the script refuses anyway), and never put a key in it: the doctor reads `.env.local` itself.
 
