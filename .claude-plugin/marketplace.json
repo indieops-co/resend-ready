@@ -1,0 +1,14 @@
+{
+  "name": "resend-ready",
+  "owner": {
+    "name": "Dave Biggs",
+    "url": "https://indieops.co"
+  },
+  "plugins": [
+    {
+      "name": "resend-ready",
+      "source": "./",
+      "description": "Resend Ready — 7-mission micro-course + permanent `resend doctor` for wiring Resend into a Next.js app (send, log, receive, reply) with Supabase/Firebase branches and deliverability best practices."
+    }
+  ]
+}
