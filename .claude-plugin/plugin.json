@@ -7,6 +7,7 @@
     "url": "https://indieops.co"
   },
   "homepage": "https://indieops.co/resend-ready",
+  "repository": "https://github.com/indieops-co/resend-ready",
   "keywords": [
     "resend",
     "email",

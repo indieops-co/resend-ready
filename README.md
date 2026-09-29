@@ -10,7 +10,7 @@ Seven missions, each with programmatic checks, a persistent progress file, an HT
 
 > Use ./resend-ready to get my app sending email properly.
 
-**As a Claude Code plugin** — the folder is also a plugin (`.claude-plugin/plugin.json`). Install it from the unzipped folder (`/plugin marketplace add ./resend-ready`, then `/plugin install resend-ready@resend-ready`); then use `/resend-ready` and `/resend-doctor`. A session-start hook nudges you while the course is unfinished and goes quiet afterwards.
+**As a Claude Code plugin** — the folder is also a plugin (`.claude-plugin/plugin.json`). Install it from the IndieOps marketplace (`/plugin marketplace add indieops-co/skilllet-registry`, then `/plugin install resend-ready@indieops-co`), or from the unzipped folder (`/plugin marketplace add ./resend-ready`, then `/plugin install resend-ready@resend-ready`); then use `/resend-ready` and `/resend-doctor`. A session-start hook nudges you while the course is unfinished and goes quiet afterwards.
 
 Either way the same files run. Node 18+ required; no npm dependencies.
 
