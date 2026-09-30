@@ -1,11 +1,13 @@
 {
   "name": "resend-ready",
   "version": "1.1.0",
-  "description": "Resend Ready \u2014 7-mission micro-course + permanent `resend doctor` for wiring Resend into a Next.js app (send, log, receive, reply) with Supabase/Firebase branches and deliverability best practices.",
+  "description": "Resend Ready — 7-mission micro-course + permanent `resend doctor` for wiring Resend into a Next.js app (send, log, receive, reply) with Supabase/Firebase branches and deliverability best practices.",
   "author": {
-    "name": "Dave Biggs"
+    "name": "Dave Biggs",
+    "url": "https://indieops.co"
   },
-  "homepage": "https://indielifelabs.com",
+  "homepage": "https://indieops.co/skills/resend-ready",
+  "repository": "https://github.com/indieops-co/resend-ready",
   "keywords": [
     "resend",
     "email",
@@ -18,5 +20,6 @@
   ],
   "commands": "./commands",
   "skills": "./skills",
-  "hooks": "./hooks/hooks.json"
+  "hooks": "./hooks/hooks.json",
+  "license": "IndieOps Free License v1.0"
 }

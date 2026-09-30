@@ -71,12 +71,31 @@ Mission 5 is skipped (marked `N/A`, not failed) when Mission 0 sets `receiving: 
 
 "Run the resend doctor" → run `scripts/doctor.mjs`, summarize the top three failing checks with the one-line fix for each, mention the report path, stop. Do not start the course unless asked.
 
+## The Check Again button
+
+After the **first** doctor run (Mission 1, or the first time someone asks for the doctor on its own), offer this once, in one line: *"Want a Check Again button? Double-click it in your project folder any time to re-run this without me, so no chat and no tokens."*
+
+If they say yes, run `node <path-to-this-folder>/scripts/make-button.mjs --project .`. Add `--live` only if they already use `--live`.
+
+Inside a sandbox such as Cowork, the script can't tell which computer the button is for and will ask. Add `--for mac` or `--for windows` to match the computer they'll double-click on. If you don't know, ask them.
+
+- On a Mac this writes `Check-Email-Readiness.command` into the project. It also saves a copy of the doctor in `.check-again/`, so the button keeps working after an update or a move. Both go into `.gitignore`.
+- On Linux it writes a `.sh` file instead.
+- On Windows no file is made; the script prints the one-line command to show them.
+
+Tell them where the button is and that it opens the report when it finishes.
+
+**The repeat rule:** if they said no, don't nag. But if they later ask for the doctor again in the same project, offer it once more in one line, because a repeat request is exactly the signal the button exists for. After a second no, never again. If a button already exists, just remind them it's there. If the button ever says it can't find the Skilllet (after a move or reinstall), just make a new one.
+
+The button runs the same read-only doctor you do. Never add `--set`, `--confirm`, `--reset` or `--certificate` to it (the script refuses anyway), and never put a key in it: the doctor reads `.env.local` itself.
+
 ## Files
 
 - `missions/00-orientation.md` … `missions/07-final-inspection.md` — the course
 - `scripts/doctor.mjs` — the tool (zero dependencies, Node 18+)
 - `scripts/checks/*.mjs` — one file per check family
 - `scripts/report.mjs` — single-file HTML report with Light | Dark | Auto toggle
+- `scripts/make-button.mjs` — writes the Check Again button (uses `scripts/lib/rerun-button.mjs`, the IndieOps standard)
 - `references/resend-facts.md` — distilled official API/DNS facts (read first)
 - `references/deliverability-playbook.md` — the "beyond plumbing" material Mission 6 draws from
 - `references/supabase.md`, `references/firebase.md` — platform branches
