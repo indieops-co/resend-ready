@@ -60,4 +60,9 @@ node scripts/doctor.mjs --project fixtures/finished-app --offline   # expect 100
 - DNS checks look at public DNS; `--live` asks Resend what it thinks. Both can lag right after a change.
 - Code checks are heuristics (`INFERRED`). They find the common patterns; an unusual layout may need a `--confirm`.
 
-MIT. Built by IndieLifeLabs. Sibling of OAuth Finishing School.
+Built by IndieLifeLabs. Sibling of OAuth Finishing School.
+
+## License
+
+Copyright © 2026 Dave Biggs. All rights reserved.  
+Licensed under the [IndieOps Free License v1.0](LICENSE). Free to use, even commercially; don't redistribute it.

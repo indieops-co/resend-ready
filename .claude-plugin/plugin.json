@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "Resend Ready \u2014 7-mission micro-course + permanent `resend doctor` for wiring Resend into a Next.js app (send, log, receive, reply) with Supabase/Firebase branches and deliverability best practices.",
   "author": {
-    "name": "IndieLifeLabs"
+    "name": "Dave Biggs"
   },
   "homepage": "https://indielifelabs.com",
   "keywords": [
